@@ -1,6 +1,6 @@
 .section {
   padding: 6rem 0;
-  background: #e5ebf2;
+  background: #000000;
   overflow: hidden;
 }
 
@@ -36,9 +36,9 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 1rem;
   font-family: var(--font-heading);
   letter-spacing: -0.025em;
@@ -46,14 +46,26 @@
 
 @media (min-width: 768px) {
   .title {
-    font-size: 3.75rem;
+    font-size: 2.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 3.5rem;
   }
 }
 
 .subtitle {
-  font-size: 1.125rem;
-  color: #4b5563;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
   font-family: var(--font-body);
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 0.9375rem;
+  }
 }
 
 /* Auto-scrolling Bar */
@@ -61,6 +73,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
+  padding: 1rem 0;
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -77,11 +90,23 @@
   );
 }
 
+@media (min-width: 768px) {
+  .scrollWrapper {
+    padding: 1.5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .scrollWrapper {
+    padding: 2rem 0;
+  }
+}
+
 .scrollContainer {
   display: flex;
   gap: 2rem;
   width: fit-content;
-  animation: scroll 30s linear infinite;
+  animation: scroll 60s linear infinite;
   will-change: transform;
 }
 
@@ -91,13 +116,13 @@
 
 @media (min-width: 768px) {
   .scrollContainer {
-    gap: 3rem;
+    gap: 4rem;
   }
 }
 
 @media (min-width: 1024px) {
   .scrollContainer {
-    gap: 4rem;
+    gap: 5rem;
   }
 }
 
@@ -112,56 +137,60 @@
 
 .partnerCard {
   flex-shrink: 0;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
-  padding: 1.5rem;
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 @media (min-width: 768px) {
   .partnerCard {
-    width: 150px;
-    height: 150px;
-    padding: 2rem;
+    width: 140px;
+    height: 140px;
   }
 }
 
 @media (min-width: 1024px) {
   .partnerCard {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
 }
 
 .partnerCard:hover {
-  background: #F4C430;
+  background: rgba(244, 196, 48, 0.15);
+  border-color: rgba(244, 196, 48, 0.4);
   transform: scale(1.05);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(244, 196, 48, 0.2);
 }
 
 .partnerLogo {
-  color: #9ca3af;
-  font-weight: 700;
-  font-size: 1.25rem;
-  transition: color 0.3s;
-  font-family: var(--font-heading);
-  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
 }
 
-@media (min-width: 768px) {
-  .partnerLogo {
-    font-size: 1.5rem;
-  }
+.logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.8);
+  opacity: 1;
+  transition: all 0.3s ease;
 }
 
-.partnerCard:hover .partnerLogo {
-  color: #000000;
+.partnerCard:hover .logoImage {
+  filter: grayscale(0%) brightness(1.2);
+  opacity: 1;
 }
 
 @keyframes fadeInUp {

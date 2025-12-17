@@ -11,8 +11,8 @@ export default function Home() {
     <main className={styles.main}>
       <Navigation />
       <Hero />
-      <Partners />
       <WorkPhilosophy />
+      <Partners />
       <VisionValues />
       <Footer />
     </main>

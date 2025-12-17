@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./Hero.module.css";
+import heroBanner from "../assets/Hero-Banner.png";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,8 +27,16 @@ export default function Hero() {
         <div className={styles.radialOverlay}></div>
       </div>
       
-      {/* Points Grid */}
-      <div className={styles.pointsGrid}></div>
+      {/* Hero Banner Image */}
+      <div className={styles.heroBannerContainer}>
+        <Image
+          src={heroBanner}
+          alt="Hero Banner"
+          fill
+          className={styles.heroBanner}
+          priority
+        />
+      </div>
       
       <div className={styles.content}>
         <div className={styles.contentGrid}>

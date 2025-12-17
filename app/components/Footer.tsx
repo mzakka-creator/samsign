@@ -72,8 +72,11 @@ export default function Footer() {
                 <span className={styles.contactLabel}>Address:</span> [Your Address]
               </li>
             </ul>
-            
-            {/* Social Media */}
+          </div>
+
+          {/* Follow Us */}
+          <div>
+            <h4 className={styles.sectionTitle}>Follow Us</h4>
             <div className={styles.socialLinks}>
               <a
                 href="#"
