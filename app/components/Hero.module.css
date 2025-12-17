@@ -51,7 +51,13 @@
 @media (max-width: 768px) {
   .heroBanner {
     opacity: 0.3;
-    object-position: center center;
+    object-position: right center;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroBanner {
+    object-position: right center;
   }
 }
 

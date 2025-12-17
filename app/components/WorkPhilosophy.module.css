@@ -27,11 +27,37 @@
 .patternOverlay {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(244, 196, 48, 0.1) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(0, 0, 0, 0.18) 20px,
+      rgba(0, 0, 0, 0.18) 21px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(0, 0, 0, 0.18) 20px,
+      rgba(0, 0, 0, 0.18) 21px
+    );
+  background-size: 28.28px 28.28px, 28.28px 28.28px;
   background-position: 0 0;
-  opacity: 0.3;
-  animation: gridMove 25s linear infinite;
+  opacity: 1;
+  mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  animation: gridMove 30s linear infinite;
 }
 
 @keyframes gridMove {
@@ -39,7 +65,7 @@
     background-position: 0 0;
   }
   100% {
-    background-position: 40px 40px;
+    background-position: 28.28px 28.28px;
   }
 }
 
@@ -193,7 +219,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
-  border: 1px solid rgba(244, 196, 48, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -201,9 +227,9 @@
 }
 
 .statItem:hover {
-  border-color: rgba(244, 196, 48, 0.6);
+  border-color: rgba(0, 0, 0, 0.2);
   background: #f9fafb;
-  box-shadow: 0 4px 12px rgba(244, 196, 48, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
 }
 

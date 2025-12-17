@@ -11,7 +11,7 @@ interface Stat {
   label: string;
 }
 
-type TabType = "about" | "vision" | "values" | "why";
+type TabType = "about" | "vision" | "values";
 
 const initialStats: Stat[] = [
   { value: 0, suffix: "+", label: "Successful Projects" },
@@ -128,7 +128,7 @@ export default function VisionValues() {
     };
   }, [activeTab, isVisible]);
 
-  const tabs: TabType[] = ["about", "vision", "values", "why"];
+  const tabs: TabType[] = ["about", "vision", "values"];
 
   const getCurrentTabIndex = () => {
     return tabs.indexOf(activeTab);
@@ -270,42 +270,6 @@ export default function VisionValues() {
               <div className={styles.valueItem}>
                 <h4 className={styles.valueTitle}>Partnership</h4>
                 <p className={styles.valueText}>Building long-term relationships based on trust, collaboration, and mutual success.</p>
-              </div>
-            </div>
-          </div>
-        );
-
-      case "why":
-        return (
-          <div className={styles.contentSection}>
-            <h3 className={styles.columnTitle}>WHY CHOOSE US</h3>
-            <p className={styles.aboutText}>
-              When you choose SamSign, you're choosing more than a signage provider. You're partnering with industry leaders who combine artistic vision with technical expertise.
-            </p>
-            <div className={styles.whyGrid}>
-              <div className={styles.whyItem}>
-                <h4 className={styles.whyTitle}>Proven Track Record</h4>
-                <p className={styles.whyText}>Since 2018, we've completed 500+ successful projects with trusted partners across various industries.</p>
-              </div>
-              <div className={styles.whyItem}>
-                <h4 className={styles.whyTitle}>Custom Solutions</h4>
-                <p className={styles.whyText}>100% tailored to your needs. No one-size-fits-all approach - every project is unique and designed specifically for you.</p>
-              </div>
-              <div className={styles.whyItem}>
-                <h4 className={styles.whyTitle}>Quality Guarantee</h4>
-                <p className={styles.whyText}>5+ years of quality assurance. We stand behind our work with comprehensive guarantees and ongoing support.</p>
-              </div>
-              <div className={styles.whyItem}>
-                <h4 className={styles.whyTitle}>Expert Team</h4>
-                <p className={styles.whyText}>Skilled professionals who combine artistic talent with engineering expertise to deliver exceptional results.</p>
-              </div>
-              <div className={styles.whyItem}>
-                <h4 className={styles.whyTitle}>End-to-End Service</h4>
-                <p className={styles.whyText}>From concept to installation, we handle every aspect of your project with precision and care.</p>
-              </div>
-              <div className={styles.whyItem}>
-                <h4 className={styles.whyTitle}>Industry Standards</h4>
-                <p className={styles.whyText}>We don't just meet industry standards - we set them. Our work reflects the highest levels of quality and innovation.</p>
               </div>
             </div>
           </div>

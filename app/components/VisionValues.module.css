@@ -1,6 +1,6 @@
 .section {
   padding: 4rem 0;
-  background: #e5ebf2;
+  background: #d0d8e0;
   opacity: 0;
   animation: fadeIn 0.8s ease-out forwards;
   position: relative;
@@ -21,6 +21,15 @@
   overflow: hidden;
   pointer-events: none;
   will-change: auto;
+}
+
+.backgroundImageContainer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .backgroundImage {
@@ -863,7 +872,7 @@
     min-height: 450px;
     max-height: 550px;
     height: 500px;
-    overflow-y: hidden;
+    overflow-y: auto;
   }
 }
 
@@ -872,6 +881,7 @@
     height: 550px;
     min-height: 550px;
     max-height: 550px;
+    overflow-y: auto;
   }
 }
 
@@ -880,6 +890,7 @@
     height: 600px;
     min-height: 600px;
     max-height: 600px;
+    overflow-y: auto;
   }
 }
 
