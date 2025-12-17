@@ -302,11 +302,11 @@
 
 .ctaButton {
   position: relative;
-  padding: 0.875rem 2rem;
+  padding: 0.875rem 1.5rem;
   background: #F4C430;
   color: #000000;
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   border: none;
   border-radius: 0;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -316,7 +316,19 @@
   cursor: pointer;
   overflow: hidden;
   width: 100%;
-  max-width: 280px;
+  max-width: 100%;
+  min-height: 44px; /* Minimum touch target size for mobile */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 360px) {
+  .ctaButton {
+    padding: 0.9375rem 1.75rem;
+    font-size: 0.875rem;
+    max-width: 260px;
+  }
 }
 
 @media (min-width: 480px) {
@@ -325,12 +337,21 @@
     font-size: 0.9375rem;
     width: auto;
     max-width: none;
+    min-height: auto;
   }
 }
 
 @media (min-width: 768px) {
   .ctaButton {
     padding: 1rem 2.75rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ctaButton {
+    padding: 1.125rem 3rem;
+    font-size: 1rem;
   }
 }
 
@@ -370,7 +391,19 @@
   display: inline-block;
   transform: translateX(0);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 1.125rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 480px) {
+  .ctaButtonArrow {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ctaButtonArrow {
+    font-size: 1.25rem;
+  }
 }
 
 .ctaButton:hover .ctaButtonArrow {
