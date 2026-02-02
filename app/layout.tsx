@@ -23,6 +23,12 @@ const cairo = Cairo({
 export const metadata: Metadata = {
   title: "SAM SIGN - Art & Experience.. Driven by Performance",
   description: "Professional Advertising Solutions & Signage. Indoor signs, outdoor signs, and comprehensive signage solutions since 2018.",
+  icons: {
+    icon: [
+      { url: "/logo.png?v=1", type: "image/png", sizes: "any" },
+    ],
+    apple: "/logo.png?v=1",
+  },
 };
 
 export default function RootLayout({
