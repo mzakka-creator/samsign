@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import styles from "./Navigation.module.css";
 import logo from "../assets/logo.png";
@@ -10,17 +11,21 @@ const translations = {
     partners: "Partners",
     philosophy: "Philosophy",
     vision: "Vision",
+    gallery: "Gallery",
     contact: "Contact",
   },
   ar: {
     partners: "الشركاء",
     philosophy: "الفلسفة",
     vision: "الرؤية",
+    gallery: "المعرض",
     contact: "اتصل بنا",
   },
 };
 
 export default function Navigation() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [language, setLanguage] = useState<"en" | "ar">("en");
@@ -52,6 +57,14 @@ export default function Navigation() {
   }, [isMobileMenuOpen]);
 
   const scrollToSection = (id: string) => {
+    // If we're on a different page, navigate to homepage first
+    if (pathname !== "/") {
+      router.push("/#" + id);
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    // Normal section scroll for homepage
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -74,6 +87,7 @@ export default function Navigation() {
     { id: "partners", label: t.partners, isButton: false },
     { id: "philosophy", label: t.philosophy, isButton: false },
     { id: "vision", label: t.vision, isButton: false },
+    { id: "gallery", label: t.gallery, isButton: false },
     { id: "contact", label: t.contact, isButton: true },
   ];
 
