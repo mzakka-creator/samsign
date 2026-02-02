@@ -81,6 +81,8 @@ const galleryItems = [
 export default function GalleryPage() {
   const [language, setLanguage] = useState<"en" | "ar">("en");
   const [isVisible, setIsVisible] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);
@@ -108,6 +110,53 @@ export default function GalleryPage() {
     
     return () => observer.disconnect();
   }, []);
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const goToNext = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % galleryItems.length);
+  };
+
+  const goToPrevious = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
+  };
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    if (!lightboxOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeLightbox();
+      } else if (e.key === "ArrowLeft") {
+        goToPrevious();
+      } else if (e.key === "ArrowRight") {
+        goToNext();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxOpen, currentImageIndex]);
+
+  // Prevent body scroll when lightbox is open
+  useEffect(() => {
+    if (lightboxOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [lightboxOpen]);
 
   const t = translations[language];
 
@@ -138,6 +187,7 @@ export default function GalleryPage() {
                 key={item.id}
                 className={`${styles.gridItem} ${isVisible ? styles.gridItemVisible : styles.gridItemHidden}`}
                 style={{ animationDelay: `${index * 0.05}s` }}
+                onClick={() => openLightbox(index)}
               >
                 <div className={styles.imageWrapper}>
                   <Image
@@ -153,6 +203,50 @@ export default function GalleryPage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div className={styles.lightbox} onClick={closeLightbox}>
+          <button className={styles.lightboxClose} onClick={closeLightbox}>
+            ×
+          </button>
+          
+          <button 
+            className={`${styles.lightboxNav} ${styles.lightboxPrev}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              goToPrevious();
+            }}
+          >
+            ←
+          </button>
+
+          <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={galleryItems[currentImageIndex].image}
+              alt={galleryItems[currentImageIndex].alt}
+              fill
+              className={styles.lightboxImage}
+              sizes="100vw"
+              priority
+            />
+          </div>
+
+          <button 
+            className={`${styles.lightboxNav} ${styles.lightboxNext}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              goToNext();
+            }}
+          >
+            →
+          </button>
+
+          <div className={styles.lightboxCounter}>
+            {currentImageIndex + 1} / {galleryItems.length}
+          </div>
+        </div>
+      )}
 
       <Footer />
     </main>
