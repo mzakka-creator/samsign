@@ -141,7 +141,7 @@ export default function Footer() {
           <ul className={styles.contactList}>
             <li>
               <span className={styles.contactLabel}>{t.phone}</span>
-              <a href="tel:+966536211111" className={styles.contactValue} dir="ltr">+966 5 362 11111</a>
+              <a href="tel:+966536211111" className={styles.contactValue} dir="ltr">+966 53 621 111</a>
             </li>
             <li>
               <span className={styles.contactLabel}>{t.email}</span>
