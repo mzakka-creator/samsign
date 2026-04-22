@@ -34,6 +34,7 @@ import Tash from "../assets/partners/Tash.svg";
 import Urth from "../assets/partners/Urth.svg";
 import ZUMA from "../assets/partners/ZUMA.svg";
 import BankAlbilad from "../assets/partners/Bank albilad.svg";
+import Jorof from "../assets/partners/jorof.svg";
 
 const translations = {
   en: {
@@ -77,6 +78,7 @@ const partners = [
   { name: "Urth", logo: Urth },
   { name: "ZUMA", logo: ZUMA },
   { name: "Bank Albilad", logo: BankAlbilad },
+  { name: "jorof", logo: Jorof, invertOnDark: true },
 ];
 
 export default function Partners() {
@@ -125,7 +127,13 @@ export default function Partners() {
         <div className={styles.gridLayout}>
           {partners.map((p) => (
             <div key={p.name} className={styles.gridLogoOnly}>
-              <Image src={p.logo} alt={p.name} width={160} height={160} className={styles.logoImage} />
+              <Image
+                src={p.logo}
+                alt={p.name}
+                width={160}
+                height={160}
+                className={`${styles.logoImage} ${p.invertOnDark ? styles.logoImageInverted : ""}`}
+              />
             </div>
           ))}
         </div>
